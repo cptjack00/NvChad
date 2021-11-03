@@ -21,22 +21,36 @@ local hooks = require "core.hooks"
 -- you can set one or many mappings
 -- example below:
 
--- hooks.add("setup_mappings", function(map)
---    map("n", "<leader>cc", "gg0vG$d", opt) -- example to delete the buffer
---    .... many more mappings ....
--- end)
+hooks.add("setup_mappings", function(map)
+   -- map("n", "<leader>cc", "gg0vG$d", opt) -- example to delete the buffer
+   -- .... many more mappings ....
+   map("n", "<leader>tt", ":TagbarToggle <CR>")
+   map("n", "<leader>rf", ":NvimTreeRefresh <CR>")
+   map("n", "<leader>cd", ":cd %:p:h<CR>:pwd <CR>")
+end)
 
 -- To add new plugins, use the "install_plugin" hook,
 -- NOTE: we heavily suggest using Packer's lazy loading (with the 'event' field)
 -- see: https://github.com/wbthomason/packer.nvim
 -- examples below:
 
--- hooks.add("install_plugins", function(use)
---    use {
---       "max397574/better-escape.nvim",
---       event = "InsertEnter",
---    }
--- end)
+hooks.add("install_plugins", function(use)
+   use {
+      "max397574/better-escape.nvim",
+      event = "InsertEnter",
+   }
+
+   use {
+    "psliwka/vim-smoothie",
+   }
+       use {
+        "preservim/tagbar",
+    }
+    use {
+        "github/copilot.vim",
+        after = "nvim-lspconfig",
+    }
+end)
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
 -- then source it with
