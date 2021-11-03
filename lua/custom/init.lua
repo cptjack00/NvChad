@@ -35,10 +35,10 @@ end)
 -- examples below:
 
 hooks.add("install_plugins", function(use)
-   use {
-      "max397574/better-escape.nvim",
-      event = "InsertEnter",
-   }
+   -- use {
+   --    "max397574/better-escape.nvim",
+   --    event = "InsertEnter",
+   -- }
 
    use {
     "psliwka/vim-smoothie",
